@@ -105,8 +105,6 @@ Feature: Case workflow management
     Then The Request Type is autopopulated as per the expected request type "<expectedrequesttype>"
     And The Type is displayed as per the expected type "<type>"
     And The Policy or Quote number is autopopulated as it is available in the mail "<policyorquotenoinsubject>"
-    Then Close the case
-    Then Verify that the priority is defined as expected "<priority>" for the given combination
     Then click on logout link and close the browser
 
     Examples: 
