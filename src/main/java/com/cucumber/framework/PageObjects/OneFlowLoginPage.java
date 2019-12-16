@@ -145,7 +145,7 @@ public static OneFlowLoginPage loginOutlook(String unamemail, String pwdmail) th
 		xpath_GenericMethod_Sendkeys(username_Xpath, username);
 		xpath_GenericMethod_Sendkeys(password_Xpath, password);
 		xpath_GenericMethod_Click(logginbtn_Xpath);
-		Thread.sleep(5000);
+		Thread.sleep(20000);
 		String titleofthehomepage = driver.getTitle();
 		Assert.assertNotEquals(titleofloginpage, titleofthehomepage);
 

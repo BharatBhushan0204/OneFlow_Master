@@ -45,6 +45,7 @@ public interface CaseManagementCycleTriagerPageLoc {
 	String workqueue_xpath = "//input[@id='0a1901c8']";
 	String Complex_xpath = "//div[@data-harness-id='HIDC07E37662D6AB994EA16DE5126896CD2']/ul";
 	String btnReassign_xpath = "//button[text()='Reassign']";
+	
 
 	// Reassign work
 
@@ -59,7 +60,8 @@ public interface CaseManagementCycleTriagerPageLoc {
 	String mail_submit = "//button[text()='Send']";
 
 	// Compose New Email
-
+	String statusofcase="//div[@data-expr-id='3399e4ce8cad29b2fbe7b201d891037ca403ef3d_11']";
 	String newemail = "//span[text()='Compose New Email']";
 	String refreshaction="//span[text()='Refresh']";
+	String audit="(//h2[text()='Audit'])";
 }

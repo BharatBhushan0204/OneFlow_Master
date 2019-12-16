@@ -363,6 +363,130 @@ public class CaseManagementCycleTriagerPage extends SeleniumFunc
 		}
 		return new CaseManagementCycleTriagerPage(driver);
 	}
+	
+	/*
+     * #############################################################################
+     * Author : Babu 
+      * Scenario : forward email & Compose new email
+     * work Description : forward mail to multiple user
+     * #############################################################################
+     */
+
+     public CaseManagementCycleTriagerPage forwardEmail() throws Exception {
+            driver.switchTo().defaultContent();
+            // click on exception WB
+            Thread.sleep(3000);
+            xpath_GenericMethod_Click(Exception_workbasket);
+            xpath_GenericMethod_Click(refresh);
+            xpath_GenericMethod_Click(refresh);
+
+            Thread.sleep(3000);
+            List<WebElement> list_of_cases = driver.findElements(By.xpath(case_list));
+            int total_cases = list_of_cases.size();
+            System.out.println(total_cases);
+            for (int i = 0; i < total_cases; i++) {
+
+                   WebDriverWait wait = new WebDriverWait(driver, 30);
+                   wait.until(ExpectedConditions.elementToBeClickable(list_of_cases.get(i)));
+                   JavascriptExecutor js = (JavascriptExecutor) driver;
+                   js.executeScript("arguments[0].click();", list_of_cases.get(i));
+                   driver.switchTo().defaultContent();
+                   xpath_GenericMethod_Click(actions_xpath);
+                   Thread.sleep(2000);
+                   xpath_GenericMethod_Click(forwardEmail_xpath);
+
+                   Thread.sleep(2000);
+                   String casestatus=driver.findElement(By.xpath(statusofcase)).getText();
+                   String casetext=casestatus;
+                   System.out.println(casestatus);
+                   Assert.assertEquals(casetext, casestatus);
+                   xpath_GenericMethod_Click(mail_submit);
+                   String text = driver.switchTo().alert().getText();
+                   System.out.println("fetch text:" + text);
+                   Thread.sleep(2000);
+                   driver.switchTo().alert().accept();
+                   Assert.assertEquals("Please correct flagged fields before submitting the form!", text);
+
+                   Thread.sleep(2000);
+                   xpath_GenericMethod_Sendkeys(tomail_xpath, "baburao.lunavath@qbe.com;");
+                   Thread.sleep(2000);
+                   
+                   Thread.sleep(2000);
+                   xpath_GenericMethod_Click(mail_submit);
+                   Thread.sleep(6000);
+                   String casestatus1=driver.findElement(By.xpath(statusofcase)).getText();
+                   String casetext1=casestatus1;
+                   System.out.println(casestatus1);
+                   Assert.assertEquals(casetext1, casestatus1);
+                   Assert.assertNotEquals(casestatus1, casestatus);
+                   Thread.sleep(2000);
+                   xpath_GenericMethod_Click(actions_xpath);
+                   Thread.sleep(2000);
+                   xpath_GenericMethod_Click(refreshaction);
+                   Thread.sleep(4000);
+                   xpath_GenericMethod_Click(audit);
+                   String forwardmailaudit="Email Forward Successful";
+                   String mailforward =driver.findElement(By.xpath("//span[text()='Email Forward Successful']")).getText();
+                   System.out.println(mailforward);
+                   Assert.assertEquals(forwardmailaudit, mailforward);
+                   
+                   
+                   break;
+
+            }
+            return new CaseManagementCycleTriagerPage(driver);
+     }
+     
+     public CaseManagementCycleTriagerPage composeNewEmail() throws Exception {
+            driver.switchTo().defaultContent();
+            // click on exception WB
+            Thread.sleep(3000);
+            xpath_GenericMethod_Click(Exception_workbasket);
+            xpath_GenericMethod_Click(refresh);
+            xpath_GenericMethod_Click(refresh);
+
+            Thread.sleep(3000);
+            List<WebElement> list_of_cases = driver.findElements(By.xpath(case_list));
+            int total_cases = list_of_cases.size();
+            System.out.println(total_cases);
+            for (int i = 0; i < total_cases; i++) {
+
+                   WebDriverWait wait = new WebDriverWait(driver, 30);
+                   wait.until(ExpectedConditions.elementToBeClickable(list_of_cases.get(i)));
+                   JavascriptExecutor js = (JavascriptExecutor) driver;
+                   js.executeScript("arguments[0].click();", list_of_cases.get(i));
+                   driver.switchTo().defaultContent();
+                   xpath_GenericMethod_Click(actions_xpath);
+                   Thread.sleep(2000);
+                   xpath_GenericMethod_Click(newemail);
+
+                   Thread.sleep(2000);
+                   String casestatus=driver.findElement(By.xpath(statusofcase)).getText();
+                   String casetext=casestatus;
+                   System.out.println(casestatus);
+                   Assert.assertEquals(casetext, casestatus);
+                   Thread.sleep(2000);
+                   xpath_GenericMethod_Click(mail_submit);
+                   Thread.sleep(6000);
+            
+
+                   xpath_GenericMethod_Click(actions_xpath);
+                   Thread.sleep(2000);
+                   xpath_GenericMethod_Click(refreshaction);
+                   Thread.sleep(4000);
+                   xpath_GenericMethod_Click(audit);
+                   String composenewmail="Performed a ' Compose New Email '.";
+                   String newmail =driver.findElement(By.xpath("//span[contains(text(),'Compose New Email')]")).getText();
+                   System.out.println(newmail);
+                   Assert.assertEquals(composenewmail, newmail);
+
+                   
+                   break;
+
+            }
+            return new CaseManagementCycleTriagerPage(driver);
+     }
+
 
 	/*
 	 * #############################################################################
@@ -371,7 +495,7 @@ public class CaseManagementCycleTriagerPage extends SeleniumFunc
 	 * #############################################################################
 	 */
 
-	public CaseManagementCycleTriagerPage forwardEmail() throws Exception {
+	/*public CaseManagementCycleTriagerPage forwardEmail() throws Exception {
 		driver.switchTo().defaultContent();
 		// click on exception WB
 		Thread.sleep(3000);
@@ -394,10 +518,10 @@ public class CaseManagementCycleTriagerPage extends SeleniumFunc
 
 			xpath_GenericMethod_Click(First_case);
 
-/*			WebDriverWait wait = new WebDriverWait(driver, 30);
+			WebDriverWait wait = new WebDriverWait(driver, 30);
 			wait.until(ExpectedConditions.elementToBeClickable(list_of_cases.get(i)));
 			JavascriptExecutor js = (JavascriptExecutor) driver;
-			js.executeScript("arguments[0].click();", list_of_cases.get(i));*/
+			js.executeScript("arguments[0].click();", list_of_cases.get(i));
 			driver.switchTo().defaultContent();
 			xpath_GenericMethod_Click(actions_xpath);
 			Thread.sleep(2000);
@@ -448,10 +572,10 @@ public class CaseManagementCycleTriagerPage extends SeleniumFunc
 
 			xpath_GenericMethod_Click(First_case);
 
-/*			WebDriverWait wait = new WebDriverWait(driver, 30);
+			WebDriverWait wait = new WebDriverWait(driver, 30);
 			wait.until(ExpectedConditions.elementToBeClickable(list_of_cases.get(i)));
 			JavascriptExecutor js = (JavascriptExecutor) driver;
-			js.executeScript("arguments[0].click();", list_of_cases.get(i));*/
+			js.executeScript("arguments[0].click();", list_of_cases.get(i));
 			driver.switchTo().defaultContent();
 			xpath_GenericMethod_Click(actions_xpath);
 			Thread.sleep(2000);
@@ -468,5 +592,5 @@ public class CaseManagementCycleTriagerPage extends SeleniumFunc
 
 		}
 		return new CaseManagementCycleTriagerPage(driver);
-	}
+	}*/
 }
