@@ -101,7 +101,7 @@ Feature: Case workflow management
     Then Login should be successful
     And Click on refresh button
     And Sort the list of cases with recent created case
-    Then Open the case and verify that the case is created and routed to user properly.
+    Then Open the case and verify that the case is created and routed to user properly and priority with "<priority>".
     Then The Request Type is autopopulated as per the expected request type "<expectedrequesttype>"
     And The Type is displayed as per the expected type "<type>"
     And The Policy or Quote number is autopopulated as it is available in the mail "<policyorquotenoinsubject>"

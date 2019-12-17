@@ -21,3 +21,6 @@
 [1213/021009.496:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
 [1213/021009.503:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
 [1213/021009.503:ERROR:exception_snapshot_win.cc(98)] thread ID 3036 not found in process
+[1216/183138.728:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1216/183138.756:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1216/183138.757:ERROR:exception_snapshot_win.cc(98)] thread ID 11572 not found in process

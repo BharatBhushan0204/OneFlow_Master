@@ -5,7 +5,8 @@ public interface CaseManagementCycleTriagerPageLoc {
 
 	String complex_workbasket = "//span[@id='Complex']";
 	String Listof_cases = "//div[@class='oflowDivM ']/span/a[@title='Click here to open the object']";
-	String case_list = "//a[@alt='Click here to open the object']";
+	String case_list = "(//table)[3]/tbody/tr/td[3]";
+	//String casecount_xpath="(//table)[3]/tbody/tr/td[3]";
 	String First_case = "(//a[@alt='Click here to open the object'])[1]";
 	String List_casedetailsvalues = "//div[@class='oflowDivM ']/span";
 	String noteinfo = "//span[contains(text(),'The case has been routed')]";
@@ -17,6 +18,7 @@ public interface CaseManagementCycleTriagerPageLoc {
 	String dashboard_xpath = "//span[text()='Dashboard']";
 	String Exception_workbasket = "//span[@id='Exception']";
 	String refresh = "(//i[@class='pi pi-refresh'])[2]";
+	String refresh_CasesStage = "(//i[@class='pi pi-refresh'])[1]";
 
 	// SLA details
 

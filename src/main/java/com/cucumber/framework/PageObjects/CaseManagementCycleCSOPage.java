@@ -229,36 +229,8 @@ public class CaseManagementCycleCSOPage extends SeleniumFunc
 
 	}
 
-	public void VerifyTheCaseRouting(String expectedSubject, String expectedFromAddress) throws Exception {
-		List<WebElement> list_of_cases = driver.findElements(By.xpath(case_list));
-		int total_cases = list_of_cases.size();
-		System.out.println(total_cases);
-		for (i = 0; i < total_cases; i++) {
-			//driver.navigate().refresh();
-			waitFor(5);
-			WebDriverWait wait = new WebDriverWait(driver, 50);
-			wait.until(ExpectedConditions.elementToBeClickable(list_of_cases.get(i)));
-			JavascriptExecutor js = (JavascriptExecutor) driver;
-			js.executeScript("arguments[0].click();", list_of_cases.get(i));
-			Thread.sleep(3000);
-			goToFrameByTag_IdByXpath(subject_label);
-			WebElement subject = driver.findElement(By.xpath(subject_label));
-			WebElement fromAddress = driver.findElement(By.xpath(from_address));
-			String actualSubject = subject.getText();
-			System.out.println("Actual subject in side the case is : " + actualSubject);
-			String actualFromAddress = fromAddress.getText();
-			System.out.println("Actual from address in side the case is :" + actualFromAddress);
-			if (actualSubject.equals(expectedSubject) && actualFromAddress.equals(expectedFromAddress)) {
-				System.out.println("Subjcet and Address matches with expected");
-				Assert.assertTrue(true);
-				break;
-			} else {
-				xpath_GenericMethod_Click(cancel_button);
-				System.out.println("Subjcet and Address not matches with expected");
-				Assert.assertFalse(false);
-			}
-
-		}
+	public void VerifyTheCaseRoutingAndPriority(String expectedSubject, String expectedFromAddress, String priority) throws Exception {
+		CommonPage.caseAndPriorityVerification(refresh_button, expectedSubject, expectedFromAddress, priority);
 	}
 
 	public void VerifyRequestType(String expectedrequesttype) throws Exception {

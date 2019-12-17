@@ -84,13 +84,14 @@ public class CaseManagementCycleCSOTest {
 		SeleniumFunc.waitFor(1);
 		caseManagementCycleCSOPage.SortTheListWithRecentCreatedCases();
 	}
-
-	@Then("Open the case and verify that the case is created and routed to user properly.")
-	public void open_the_case_and_verify_that_the_case_is_created_and_routed_to_user_properly() throws Exception {
-		// Write code here that turns the phrase above into concrete actions
+	
+	@Then("Open the case and verify that the case is created and routed to user properly and priority with {string}.")
+	public void open_the_case_and_verify_that_the_case_is_created_and_routed_to_user_properly_and_priority_with(String priority) throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
 		caseManagementCycleCSOPage = new CaseManagementCycleCSOPage(TestBase.getDriver());
 		caseManagementCycleCSOPage.sendCaseManagementCycleCSOObject(caseManagementCycleCSOPage);
-		caseManagementCycleCSOPage.VerifyTheCaseRouting(subject, "bharatbhushan.thanikanti@qbe.com");
+		caseManagementCycleCSOPage.VerifyTheCaseRoutingAndPriority(subject, "bharatbhushan.thanikanti@qbe.com", priority);
+
 	}
 
 	@Then("The Request Type is autopopulated as per the expected request type {string}")
